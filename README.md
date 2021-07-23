@@ -45,7 +45,7 @@ sudo ./Pipe_lang/install
 ```
 
 Now, open a new terminal.
-You should be able to run command 'pipe'.
+You should be able to run command ***'pipe'***.
 
 ### Uninstall
 To uninstall Pipe_lang : (requires root privileges)
@@ -67,7 +67,8 @@ There you go !
 The Pipe language has a pretty simple syntax consisting in 3 types of statements :
  - Nodes   (o)
  - Pipes   (| - / \ < > ^ v +)
- - Command (x=2, echo $x...)<br>
+ - Command (x=2, echo $x...)
+
 Any other statement will not be interpreted, it is just floating text.
 
 &nbsp;
@@ -83,6 +84,7 @@ Each time a node is reached, the command written to the right of this node is ex
 Then, depending on the exit code of this command, execution continues :
  - **DOWN** : if error code is 0     (No problem in command)
  - **LEFT** : if error code is not 0 (Problem occured)
+
 (The command to is a ***BASH*** command)
 
 &nbsp;
@@ -91,7 +93,7 @@ Then, depending on the exit code of this command, execution continues :
 As we said, execution goes **LEFT** or **DOWN** depending on the last command executed.<br>
 **It is MANDATORY to have a character receiving the execution if it occurs.**<br>
 If the execution goes to a pipe character, it will follow the pipe.<br>
-If it is another character, program stops here.
+If it is another character, program stops here.<br>
 
 &nbsp;
 
@@ -128,6 +130,8 @@ Here is some rules on pipe redirection :
   (At X, going to the RIGHT :  X---<---
    Flow will go to the LEFT at '<'
    Very useful in intersections)
+
+- If a node outputs the execution to another node directly, it is the same thing as if there was a pipe between them.
 ```
 
 &nbsp;
