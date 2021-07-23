@@ -45,7 +45,7 @@ case $1 in
 
 	#action 3 : debug mode
 	'-d' | '--debug')
-		./opt/Pipe_lang/src/main.py $@
+		/./opt/Pipe_lang/src/main.py $@
 	;;
 
 	#undefined action
@@ -56,6 +56,6 @@ case $1 in
 
 	#action 4 : execute script
 	*)
-		./opt/Pipe_lang/src/main.py $@
+		/./opt/Pipe_lang/src/main.py $@
 	;;
 esac

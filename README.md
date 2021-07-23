@@ -44,8 +44,7 @@ Then launch the installer : (requires root privileges to install correctly)
 sudo ./Pipe_lang/install
 ```
 
-Now, open a new terminal.
-You should be able to run command ***'pipe'***.
+Now you should be able to run command ***'pipe'***.
 
 ### Uninstall
 To uninstall Pipe_lang : (requires root privileges)

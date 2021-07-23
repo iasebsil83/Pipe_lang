@@ -13,5 +13,6 @@ fi
 
 #installation
 mkdir -p /opt
-mv Pipe_lang /opt/Pipe_lang
-ln -s /opt/Pipe_lang/run /usr/bin/pipe
+mv Pipe_lang /opt/Pipe_lang            && \
+ln -s /opt/Pipe_lang/run /usr/bin/pipe && \
+echo "Successfully installed Pipe_lang."
