@@ -13,10 +13,10 @@
 Have you ever though about coding in another way than only from up to down, line by line, execution after execution ?
 What about a program that is not always following the same direction, but the one you told him to do.
 
-That's exactly the reason why the **Pipe** programming language has been made for. &nbsp;
-Draw a shape, a pipe circuit and your program will follow the path as far as possible ! &nbsp;
+That's exactly the reason why the **Pipe** programming language has been made for. <br>
+Draw a shape, a pipe circuit and your program will follow the path as far as possible !
 
-There are so many possibilities, action and reaction, direction and redirection...
+There are so many possibilities, action and reaction, direction and redirection...<br>
 Who knows what can be done with this language ?
 
 Maybe it's time for you to test it...
