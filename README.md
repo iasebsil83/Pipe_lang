@@ -29,7 +29,7 @@ Maybe it's time for you to test it...
 
 ## II] Installation
 
-**WARNING : Make sur you don't have a** ***'pipe'*** **command already installed on your system.**
+**WARNING : Make sur you don't have a** ***'pipe'*** **command already installed on your system.**<br>
 **(Keep calm, Pipe_lang will not overwrite it in any cases)**
 
 ### Install
@@ -39,18 +39,18 @@ Get the repository from GitHub :
 ```bash
 git clone https://github.com/iasebsil83/Pipe_lang
 ```
-Then launch the installer :
+Then launch the installer : (requires root privileges to install correctly)
 ```bash
-./Pipe_lang/install
+sudo ./Pipe_lang/install
 ```
 
 Now, open a new terminal.
-You should be able to run these new command 'pipe'.
+You should be able to run command 'pipe'.
 
 ### Uninstall
-To uninstall Pipe_lang :
+To uninstall Pipe_lang : (requires root privileges)
 ```bash
-rm -rf /opt/Pipe_lang /usr/bin/pipe   #requires root privileges
+sudo rm -rf /opt/Pipe_lang /usr/bin/pipe
 ```
 
 There you go !
@@ -120,6 +120,15 @@ Here is some rules on pipe redirection :
    Flow will go to the LEFT at '<'
    Very useful in intersections)
 ```
+
+### Running a script
+When you think your code is ready to be executed, you can run it using :
+```bash
+ pipe myScript.pipe
+```
+Other options are available, use `pipe --help` to see them.
+
+&nbsp;
 
 That's it for the Pipe language, hoping it leads to beautiful codes !
 
