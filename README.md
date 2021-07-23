@@ -77,11 +77,11 @@ This is the first node.
 ### Executing node
 Each time a node is reached, the command written to the right of this node is executed.<br>
 Then, depending on the exit code of this command, execution continues :
- - DOWN : if error code is 0     (No problem in command)
- - LEFT : if error code is not 0 (Problem occured)
+ - **DOWN** : if error code is 0     (No problem in command)
+ - **LEFT** : if error code is not 0 (Problem occured)
 
 ### Catching execution
-As we said, execution goes LEFT or DOWN depending on the last command executed.<br>
+As we said, execution goes **LEFT** or **DOWN** depending on the last command executed.<br>
 **It is MANDATORY to have a character receiving the execution if it occurs.**<br>
 If the execution goes to a pipe character, it will follow the pipe.<br>
 If it is another character, program stops here.
