@@ -1,82 +1,61 @@
-#!/usr/bin/python3
-
-
-
-
-
-
-# ---- importations ----
-import sys
-from src import reader
-
-
-
-
-
-
-# ---- utilities ----
-
-#help
-def showHelp():
-	print(
-		"Usage : pipe [action] [file]\n"
-		"Executes a script written in language 'pipe'.\n"
-		"\n"
-		"Action :\n"
-		"  -h --help  : Show this help message.\n"
-		"  -d --debug : Enable debug mode."
-		"\n"
-		"Examples :\n"
-		"  > pipe myScript.pi\n"
-		"  #Executes program myScript.pi without any debug.\n"
-		"\n"
-		"More information about this language and interpreter at :\n"
-		"    https://github.com/iasebsil83/Pipe"
-	)
-
-
-
+#!/bin/bash
 
 
 
 # ---- main ----
+case $1 in
 
-#empty => help with error code 1
-if len(sys.argv) < 2:
-	showHelp()
-	exit(1)
+	#action 1 : help
+	'' | '-h' | '--help')
+		echo "Usage : pipe [action] [file]"
+		echo "Executes a script written in language pipe."
+		echo
+		echo "Action :"
+		echo "  -h, --help   : Show this help message."
+		echo "  -u, --update : Update Pipe interpreter to the latest version."
+		echo
+		echo " Example :"
+		echo "  > pipe myScript.pipe"
+		echo "  #Executes program myScript.pipe without any debug."
+		echo
+		echo "More information about this language and interpreter at  :"
+		echo "    https://github.com/iasebsil83/Pipe_lang"
+		[[ $1 == '' ]] && exit 1
+	;;
 
-else:
+	#action 2 : update
+	'-u' | '--update')
 
-	#help
-	if sys.argv[1] == '-h' or sys.argv[1] == '--help':
-		showHelp()
-		exit(0)
+		#go in Pipe_lang directory
+		oldPath=$(pwd)
+		cd /opt/Pipe_lang
 
-	fileName = sys.argv[1]
+		#get the latest version from GitHub (https://github.com/iasebsil83/Pipe_lang)
+		git pull && {
+			#success
+			echo "Pipe_lang updated !"
+			cd $oldPath
+		} || {
+			#failure
+			echo "pipe: Could not update Pipe_lang.";
+			cd $oldPath
+			exit 1
+		}
+	;;
 
-	#check for debug option
-	debugMode = False
-	if len(sys.argv) > 2:
-		if sys.argv[1] == '-d' or sys.argv[1] == '--debug':
-			debugMode = True
-			fileName = sys.argv[2]
-		elif sys.argv[2] == '-d' or sys.argv[2] == '--debug':
-			debugMode = True
+	#action 3 : debug mode
+	'-d' | '--debug')
+		./opt/Pipe_lang/src/main.py $@
+	;;
 
-	#check if fileName is not an action
-	if fileName[0] == '-':
-		print("pipe: Undefined option '" + fileName + "'.")
-		exit(1)
+	#undefined action
+	-*)
+		echo "pipe: Undefined action or argument '$1'."
+		exit 1
+	;;
 
-	#get script content
-	try:
-		f = open(fileName, "r")
-		code = f.read().split('\n')
-		f.close()
-
-		#execute script
-		reader.run(code, debugMode)
-	except FileNotFoundError:
-		print("pipe: File " + fileName + " not found.")
-		exit(1)
+	#action 4 : execute script
+	*)
+		./opt/Pipe_lang/src/main.py $@
+	;;
+esac

@@ -1,10 +1,17 @@
 #!/bin/bash
 
-#error case
+#error cases
 if [[ -e /usr/bin/pipe ]]; then
 	echo "pipe: Could not install, a \"pipe\" command already exist on your system."
 	exit 1
 fi
 
+if [[ -e /opt/Pipe_lang ]]; then
+	echo "pipe: Could not install, A previous installation of Pipe_lang exists on your system."
+	exit 1
+fi
+
 #installation
-ln -s $PWD/run /usr/bin/pipe
+mkdir -p /opt
+mv Pipe_lang /opt/Pipe_lang
+ln -s /opt/Pipe_lang/run /usr/bin/pipe
