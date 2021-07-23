@@ -7,7 +7,7 @@
 
 # ---- importations ----
 import sys
-from . import reader
+import reader
 
 
 

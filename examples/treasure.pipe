@@ -22,17 +22,22 @@ DON'T USE MINIMAL 'O' BEFORE THE FIRST NODE.
   |/--o [[ $(cat tempY) == '1' ]]
   ||  |
   ||  o echo "You found the treasure."
-  ||
-  ||
-  \+--\
-   |  |
-   v--o [[ $(cat tempX) == '4' ]]
-   |  |
-   v--o [[ $(cat tempY) == '3' ]]
-   |  |
-   |  o echo "You found the trap !"
-   |
-   \--\
-      o echo "You found nothing."
-      |
-      o rm tempX tempY
+  ||  |
+  ||  \-------------------------------\
+  ||                                  |
+  \+--\                               |
+   |  |                               |
+   v--o [[ $(cat tempX) == '4' ]]   # |
+   |  |                               |
+   v--o [[ $(cat tempY) == '3' ]]   # |
+   |  |                               |
+   |  o echo "You found the trap !" # |
+   |  |                               |
+   |  \-------------------------------v
+   |                                  |
+   \--\                               |
+      o echo "You found nothing." #   |
+    /-v                               |
+    | o rm tempX tempY   # /----------/
+    |                      |
+    \----------------------/
