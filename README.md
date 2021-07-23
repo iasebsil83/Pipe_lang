@@ -107,7 +107,8 @@ Here is some rules on pipe redirection :
   (The same character '|' can be either traveled from UP to DOWN and from DOWN to UP)
 
 - Depending on the sens the execution goes, the flow can be turned.
-  (At X, going to the RIGHT :      |
+  (For character '/' :
+   At X, going to the RIGHT :      |
                                X---/  Flow is turning UP.
    BUT
    At X, going to the LEFT :   /---X
@@ -126,12 +127,17 @@ Here is some rules on pipe redirection :
                     LEFT/RIGHT walls    LEFT/RIGHT line
   )
 
-- To force the flow to go in a precise direction, use '< > ^ v'
+- To force the flow to go in a precise direction, use '< > ^ v'.
   (At X, going to the RIGHT :  X---<---
    Flow will go to the LEFT at '<'
-   Very useful in intersections)
+   Very useful for intersections)
 
-- If a node outputs the execution to another node directly, it is the same thing as if there was a pipe between them.
+- If a node outputs the execution to another node directly,
+  it is the same thing as if there was a pipe between them.
+  ( o <=> o
+    o     |     oo <=> o--o
+          o
+  )
 ```
 
 &nbsp;
