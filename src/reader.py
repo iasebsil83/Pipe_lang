@@ -329,11 +329,11 @@ def run(code, debugMode):
 	if g['debug_on']:
 		print("Code lineMax : " + str(g['lineMax']) )
 
-	#skip all lines until a node is found (character 'o')
+	#skip all lines until a node is found (character 'o' followed by ' ')
 	while True:
 
 		#search for a node
-		g['column'] = code[ g['line'] ].find('o')
+		g['column'] = code[ g['line'] ].find('o ')
 		if g['column'] != -1:
 			break
 

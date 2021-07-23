@@ -64,7 +64,7 @@ There you go !
 
 ### Syntax
 The Pipe language has a pretty simple syntax consisting in 3 types of statements :
- - Nodes   (o)
+ - Nodes   (o )
  - Pipes   (| - / \ < > ^ v +)
  - Command (x=2, echo $x...)
 
@@ -73,7 +73,7 @@ Any other statement will not be interpreted, it is just floating text.
 &nbsp;
 
 ### Start
-When a script starts its execution, the Pipe interpreter is looking for the first character **'o'** in the file.<br>
+When a script starts its execution, the Pipe interpreter is looking for the first character **'o'** in the file followed by a ' ' (space).<br>
 This is the first node.
 
 &nbsp;
@@ -84,7 +84,8 @@ Then, depending on the exit code of this command, execution continues :
  - **DOWN** : if error code is 0     (No problem in command)
  - **LEFT** : if error code is not 0 (Problem occured)
 
-(The command to is a ***BASH*** command)
+(The command to is a ***BASH*** command)<br>
+**A node must always be followed by a space, even if there is no command after it.**
 
 &nbsp;
 

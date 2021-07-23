@@ -1,7 +1,10 @@
 #!/usr/bin/pipe
 
-This file is a pipe prgm example.
-DON'T USE MINIMAL 'O' BEFORE THE FIRST NODE.
+
+This file is a pipe program example.
+DON'T USE character 'o' FOLLOWED BY A SPACE BEFORE THE FIRST NODE.
+(It will be detected as the first node)
+
 
     /---o read -p "Give an x : " x && echo $x > tempX
     |   |

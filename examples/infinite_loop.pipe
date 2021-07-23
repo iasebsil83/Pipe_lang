@@ -1,0 +1,14 @@
+#!/usr/bin/pipe
+
+ The easiest way to_ do_ an infinite loop in pipe :
+
+ o echo "yo" && sleep 0.5
+ ^
+
+ For multiple statements :
+
+ /-\
+ | o echo "a"
+ | o echo "b"
+ | o echo "c" && sleep 0.5
+ \-/
