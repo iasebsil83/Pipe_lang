@@ -67,13 +67,15 @@ There you go !
 The Pipe language has a pretty simple syntax consisting in 3 types of statements :
  - Nodes   (o)
  - Pipes   (| - / \ < > ^ v +)
- - Command (x=2, echo $x...)
+ - Command (x=2, echo $x...)<br>
 Any other statement will not be interpreted, it is just floating text.
+
 &nbsp;
 
 ### Start
-When a script starts its execution, the Pipe interpreter is looking for the first character *'o'* in the file.<br>
+When a script starts its execution, the Pipe interpreter is looking for the first character **'o'** in the file.<br>
 This is the first node.
+
 &nbsp;
 
 ### Executing node
@@ -82,6 +84,7 @@ Then, depending on the exit code of this command, execution continues :
  - **DOWN** : if error code is 0     (No problem in command)
  - **LEFT** : if error code is not 0 (Problem occured)
 (The command to is a ***BASH*** command)
+
 &nbsp;
 
 ### Catching execution
@@ -89,6 +92,7 @@ As we said, execution goes **LEFT** or **DOWN** depending on the last command ex
 **It is MANDATORY to have a character receiving the execution if it occurs.**<br>
 If the execution goes to a pipe character, it will follow the pipe.<br>
 If it is another character, program stops here.
+
 &nbsp;
 
 ### Pipe redirection
@@ -125,6 +129,7 @@ Here is some rules on pipe redirection :
    Flow will go to the LEFT at '<'
    Very useful in intersections)
 ```
+
 &nbsp;
 
 ### Running a script
@@ -139,6 +144,7 @@ Other options are available, use `pipe --help` to see them.
 That's it for the Pipe language, hoping it leads to beautiful codes !
 
 &nbsp;
+
 &nbsp;
 
 
