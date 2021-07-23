@@ -1,0 +1,10 @@
+#!/bin/bash
+
+#error case
+if [[ -e /usr/bin/pipe ]]; then
+	echo "pipe: Could not install, a \"pipe\" command already exist on your system."
+	exit 1
+fi
+
+#installation
+ln -s $PWD/run /usr/bin/pipe

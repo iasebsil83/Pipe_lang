@@ -1,0 +1,82 @@
+#!/usr/bin/python3
+
+
+
+
+
+
+# ---- importations ----
+import sys
+from src import reader
+
+
+
+
+
+
+# ---- utilities ----
+
+#help
+def showHelp():
+	print(
+		"Usage : pipe [action] [file]\n"
+		"Executes a script written in language 'pipe'.\n"
+		"\n"
+		"Action :\n"
+		"  -h --help  : Show this help message.\n"
+		"  -d --debug : Enable debug mode."
+		"\n"
+		"Examples :\n"
+		"  > pipe myScript.pi\n"
+		"  #Executes program myScript.pi without any debug.\n"
+		"\n"
+		"More information about this language and interpreter at :\n"
+		"    https://github.com/iasebsil83/Pipe"
+	)
+
+
+
+
+
+
+# ---- main ----
+
+#empty => help with error code 1
+if len(sys.argv) < 2:
+	showHelp()
+	exit(1)
+
+else:
+
+	#help
+	if sys.argv[1] == '-h' or sys.argv[1] == '--help':
+		showHelp()
+		exit(0)
+
+	fileName = sys.argv[1]
+
+	#check for debug option
+	debugMode = False
+	if len(sys.argv) > 2:
+		if sys.argv[1] == '-d' or sys.argv[1] == '--debug':
+			debugMode = True
+			fileName = sys.argv[2]
+		elif sys.argv[2] == '-d' or sys.argv[2] == '--debug':
+			debugMode = True
+
+	#check if fileName is not an action
+	if fileName[0] == '-':
+		print("pipe: Undefined option '" + fileName + "'.")
+		exit(1)
+
+	#get script content
+	try:
+		f = open(fileName, "r")
+		code = f.read().split('\n')
+		f.close()
+
+		#execute script
+		reader.run(code, debugMode)
+	except FileNotFoundError:
+		print("pipe: File " + fileName + " not found.")
+		exit(1)
