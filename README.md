@@ -101,7 +101,7 @@ If it is another character, program stops here.<br>
 In the case execution goes to a pipe character, the execution flow will follow the line until a next node is found.<br>
 Here is some rules on pipe redirection :
 ```
-- A node have 1 input (UP) and 2 possible outputs (DOWN/LEFT)
+- A node have 1 input and 2 possible outputs (DOWN/LEFT)
 
 - A pipe has no proper 'sens'
   (The same character '|' can be either traveled from UP to DOWN and from DOWN to UP)

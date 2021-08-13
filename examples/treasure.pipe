@@ -2,7 +2,7 @@
 
 
 This file is a pipe program example.
-DON'T USE character 'o' FOLLOWED BY A SPACE BEFORE THE FIRST NODE.
+DON'T USE CHARACTER 'o' FOLLOWED BY A SPACE BEFORE THE FIRST NODE.
 (It will be detected as the first node)
 
 

@@ -364,6 +364,7 @@ def run(code, debugMode):
 		#debug
 		if g['debug_on']:
 			print("Command to execute : \"" + code[ g['line'] ][ g['column'] +1:].replace('"','\\"') + "\".")
+			input("[Press ENTER to continue]")
 
 		#execute command after node
 		error = subprocess.call([

@@ -9,16 +9,13 @@ Note that I avoided the first node detection by using '_' after
 words finishing by 'o'.
 
 
-   /o read -p "Give an x : " x && echo $x > tempX
-   vo read -p "Give an y : " y && echo $y > tempY
- /-+/
- | o echo "ERROR"
- | o exit 1
- |
- \---\
-   /-o [[ $(cat tempX) == '2' ]]
-   |/o [[ $(cat tempY) == '1' ]]
-   ||\\
+        /o read -p "Give an x : " x && echo $x > tempX
+        vo read -p "Give an y : " y && echo $y > tempY
+      /-+/
+      | o echo "ERROR"
+      | o exit 1
+   /--o [[ $(cat tempX) == '2' ]]
+   |/-o [[ $(cat tempY) == '1' ]]
    || o echo "You found the treasure."
    \+\\-----------------------------\
     vo [[ $(cat tempX) == '4' ]]   #|
@@ -26,8 +23,6 @@ words finishing by 'o'.
     |\\                             |
     | o echo "You found the trap !"#|
     | \-----------------------------v
-    o echo "You found nothing."    #|
-   />\                              |
-   | o rm tempX tempY #/------------/
-   |                   |
-   \-------------------/
+    o echo "You found nothing."#/---/
+    \v--------------------------/
+     o rm tempX tempY

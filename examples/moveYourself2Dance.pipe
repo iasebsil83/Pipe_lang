@@ -1,0 +1,116 @@
+#!/usr/bin/pipe
+
+This program is an example of pipe program.
+It shows you a way to_ get user input and then
+to_ show a console display.
+
+Your position is marked by an 'X' and you can
+move with 'Z/Q/S/D' (Azerty keyboard for 'W/A/S/D')
+
+Note that this program takes a big place.
+The exact same program has also_ been made in
+compressed format.
+
+
+
+                 INITIALIZATION
+                 o echo '12' > my2d_MAX_WIDTH     # dimension constants
+                 o echo  '6' > my2d_MAX_HEIGHT    # ('#' is required cause we are at the end of a command)
+                 |
+                 o echo '0'  > my2d_x             # init position
+                 o echo '0'  > my2d_y
+                 |
+                 o echo '0'  > my2d_cntX          # init position counters
+                 o echo '0'  > my2d_cntY          # (for screen display)
+                 |
+                 o echo ''   > my2d_line          # actual line display
+                 |
+                 |
+                 |
+  /---->---------v GET USER INPUT
+  |    |         o read -p "Please enter a direction [z/Z, q/Q, s/S, d/D] (e to exit) : " temp && echo -e $temp > my2d_input
+  |    |         |
+  |    |         |
+  |    |         | ANALYSE INPUT
+  |    |   /-----o [[ $(cat my2d_input) != 'z' && $(cat my2d_input) != 'Z' ]]
+  |    |   |/----o [[ $(cat my2d_input) != 'q' && $(cat my2d_input) != 'Q' ]]
+  |    |   ||/---o [[ $(cat my2d_input) != 's' && $(cat my2d_input) != 'S' ]]
+  |    |   |||/--o [[ $(cat my2d_input) != 'd' && $(cat my2d_input) != 'D' ]]
+  |    |   ||||/-o [[ $(cat my2d_input) != 'e' && $(cat my2d_input) != 'E' ]]
+  |    |   ||||| |
+  |    \---+++++-/
+  |        |||||
+  |        ||||\------------------------------------------------------------------\ EXIT PROGRAM
+  |        ||||                                                                   o rm my2d_*    #remove all temporary files
+  |        ||||                TRY TO CHANGE POSITION
+  |        |||\----\
+  |        |||     | D
+  |        |||   /-o (( $(cat my2d_x) < $(cat my2d_MAX_WIDTH)-1 ))
+  |        |||   | |                                                               CHANGE POSITION
+  |        |||   | \--------------------------------------------------------\
+  |        |||   |                                                          o echo $(( $(cat my2d_x) +1 )) > my2d_x
+  |        ||\---+-\                                                        |
+  |        ||    | | S                                                      |
+  |        ||    v-o (( $(cat my2d_y) < $(cat my2d_MAX_HEIGHT)-1 ))        #|
+  |        ||    | |                                                        |
+  |        ||    | \--------------------------------------------------------+-\
+  |        ||    |                                                          | o echo $(( $(cat my2d_y) +1 )) > my2d_y
+  |        |\----+-\                                                        v-/
+  |        |     | | Q                                                      |
+  |        |     v-o (( $(cat my2d_x) > 0 ))                               #|
+  |        |     | |                                                        |
+  |        |     | \--------------------------------------------------------+-\
+  |        |     |                                                          | o echo $(( $(cat my2d_x) -1 )) > my2d_x
+  |        \-----+-\                                                        v-/
+  |              | | Z                                                      |
+  |              v-o (( $(cat my2d_y) > 0 ))                               #|
+  |              | |                                                        |
+  |              | \--------------------------------------------------------+-\
+  |              |                                                          | o echo $(( $(cat my2d_y) -1 )) > my2d_y
+  |           /--<----------------------------------------------------------<-/
+  |           |
+  |           |
+  |           |
+  |           | SCREEN DISPLAY
+  |           o clear
+  |           |
+  |        /--v FOR LOOP ON cntY UNTIL MAX_HEIGHT
+  |        |  |
+  | /------+--o [[ $(cat my2d_cntY) != $(cat my2d_MAX_HEIGHT) ]] #CONDITION ON cntY
+  | |      |  |
+  | |      |  | ADD BEGINNING OF LINE
+  | |      |  o echo $(cat my2d_line)'|' > my2d_line
+  | |      |  |
+  | |      |  \------>---\ FOR LOOP ON x UNTIL MAX_WIDTH
+  | |      |         |   |
+  | |      |  /------+---o [[ $(cat my2d_cntX) != $(cat my2d_MAX_WIDTH) ]] #CONDITION ON cntX
+  | |      |  |      |   |
+  | |      |  |      |   |
+  | |      |  |      |   |
+  | |      |  |      |   | DISPLAY DEPENDING ON USER POSITION
+  | |      |  |      |   |
+  | |      |  |      | /-o [[ $(cat my2d_cntX) == $(cat my2d_x) && $(cat my2d_cntY) == $(cat my2d_y) ]]
+  | |      |  |      | | o echo $(cat my2d_line)'X' > my2d_line
+  | |      |  |      | | |
+  | |      |  |      | \-+-\
+  | |      |  |      |   | o echo $(cat my2d_line)'.' > my2d_line
+  | |      |  |      |   v-/
+  | |      |  |      |   |
+  | |      |  |      |   | INCREASE cntX
+  | |      |  |      |   o echo $(( $(cat my2d_cntX) +1 )) > my2d_cntX
+  | |      |  |      \---/
+  | |      |  |
+  | |      |  | PRINT & RESET LINE
+  | |      |  o echo $(cat my2d_line)'|'
+  | |      |  o echo '' > my2d_line
+  | |      |  |
+  | |      |  | RESET cntX
+  | |      |  o echo '0' > my2d_cntX
+  | |      |  |
+  | |      |  | INCREASE cntY
+  | |      |  o echo $(( $(cat my2d_cntY) +1 )) > my2d_cntY
+  | |      \--/
+  | |
+  | | RESET cntY
+  | o echo "0" > my2d_cntY
+  \-/

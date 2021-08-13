@@ -11,6 +11,7 @@ case $1 in
 		echo "Executes a script written in language pipe."
 		echo
 		echo "Action :"
+		echo "  -d, --debug  : Enable debug mode."
 		echo "  -h, --help   : Show this help message."
 		echo "  -u, --update : Update Pipe interpreter to the latest version."
 		echo

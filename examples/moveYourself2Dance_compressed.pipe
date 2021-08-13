@@ -1,0 +1,55 @@
+#!/usr/bin/pipe
+
+This file is the same as moveYourself2Dance.pipe.
+The syntax is compressed to_ show how compact a pipe code can be,
+and also_ how complex it is to_ follow the pipe in this case.
+
+Note that I avoided the first node detection by using '_' after
+words finishing by 'o'.
+
+
+          o echo '12' > my2d_MAX_WIDTH
+          o echo  '6' > my2d_MAX_HEIGHT
+          o echo '0'  > my2d_x
+          o echo '0'  > my2d_y
+          o echo '0'  > my2d_cntX
+          o echo '0'  > my2d_cntY
+          o echo ''   > my2d_line
+  />------v
+  ||      o read -p "Please enter a direction [z/Z, q/Q, s/S, d/D] (e to exit) : " temp && echo -e $temp > my2d_input
+  ||/-----o [[ $(cat my2d_input) != 'z' && $(cat my2d_input) != 'Z' ]]
+  |||/----o [[ $(cat my2d_input) != 'q' && $(cat my2d_input) != 'Q' ]]
+  ||||/---o [[ $(cat my2d_input) != 's' && $(cat my2d_input) != 'S' ]]
+  |||||/--o [[ $(cat my2d_input) != 'd' && $(cat my2d_input) != 'D' ]]
+  ||||||/-o [[ $(cat my2d_input) != 'e' && $(cat my2d_input) != 'E' ]]
+  |\+++++-/-\
+  |/////\-/ o rm my2d_*
+  ||||\-\
+  ||||/-o (( $(cat my2d_x) < $(cat my2d_MAX_WIDTH)-1 ))#/-\
+  |||\+-\-----------------------------------------------/ o echo $(( $(cat my2d_x) +1 )) > my2d_x
+  ||| v-o (( $(cat my2d_y) < $(cat my2d_MAX_HEIGHT)-1 ))#//-\
+  ||\-+-\------------------------------------------------+/ o echo $(( $(cat my2d_y) +1 )) > my2d_y
+  ||  v-o (( $(cat my2d_x) > 0 ))#/----------------------<--/
+  |\--+-\-------------------------+---\
+  |   v-o (( $(cat my2d_y) > 0 ))#v-\ o echo $(( $(cat my2d_x) -1 )) > my2d_x
+  |   | \-------------------------+-\-/
+  |   v---------------------------< o echo $(( $(cat my2d_y) -1 )) > my2d_y
+  |   o clear                    #\-/
+  | /-v
+  |/+-o [[ $(cat my2d_cntY) != $(cat my2d_MAX_HEIGHT) ]]
+  ||| o echo $(cat my2d_line)'|' > my2d_line
+  ||| \>--\
+  ||| /+--o [[ $(cat my2d_cntX) != $(cat my2d_MAX_WIDTH) ]]
+  ||| ||/-o [[ $(cat my2d_cntX) == $(cat my2d_x) && $(cat my2d_cntY) == $(cat my2d_y) ]]
+  ||| ||| o echo $(cat my2d_line)'X' > my2d_line #/-\
+  ||| ||\-+---------------------------------------/ o echo $(cat my2d_line)'.' > my2d_line
+  ||| || /<-----------------------------------------/
+  ||| || o echo $(( $(cat my2d_cntX) +1 )) > my2d_cntX
+  ||| |\-/
+  ||| o echo $(cat my2d_line)'|'
+  ||| o echo '' > my2d_line
+  ||| o echo '0' > my2d_cntX
+  ||| o echo $(( $(cat my2d_cntY) +1 )) > my2d_cntY
+  |\\-/
+  | o echo "0" > my2d_cntY
+  \-/

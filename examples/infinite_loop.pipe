@@ -2,13 +2,32 @@
 
  The easiest way to_ do_ an infinite loop in pipe :
 
- o echo "yo" && sleep 0.5
- ^
+ o echo "yo" && sleep 0.5    #or  o echo "yo" && sleep 0.5
+ ^                                -
+
+
+
+ In case the execution can have exit code 1 :
+
+ >o echo "yo" && sleep 0.5   #or  |o echo "yo" && sleep 0.5
+  ^                                -
+
+
 
  For multiple statements :
 
  /-\
  | o echo "a"
  | o echo "b"
- | o echo "c" && sleep 0.5
+ | o echo "c"
+ | o echo "d" && sleep 0.5
  \-/
+
+ And if we are sure to_ not have any error code 1 :
+
+ /\
+ |o echo "a"
+ |o echo "b"
+ |o echo "c"
+ |o echo "d" && sleep 0.5
+ \/
