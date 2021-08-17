@@ -72,13 +72,13 @@ Any other statement will not be interpreted, it is just floating text.
 
 &nbsp;
 
-### Start
-When a script starts its execution, the Pipe interpreter is looking for the first character **'o'** in the file followed by a ' ' (space).<br>
+### 1) Start
+When a script starts its execution, the Pipe interpreter is looking for the first character **'o'** in the file followed by a space.<br>
 This is the first node.
 
 &nbsp;
 
-### Executing node
+### 2) Executing node
 Each time a node is reached, the command written to the right of this node is executed.<br>
 Then, depending on the exit code of this command, execution continues :
  - **DOWN** : if error code is 0     (No problem in command)
@@ -89,7 +89,7 @@ Then, depending on the exit code of this command, execution continues :
 
 &nbsp;
 
-### Catching execution
+### 3) Catching execution
 As we said, execution goes **LEFT** or **DOWN** depending on the last command executed.<br>
 **It is MANDATORY to have a character receiving the execution if it occurs.**<br>
 If the execution goes to a pipe character, it will follow the pipe.<br>
@@ -97,11 +97,11 @@ If it is another character, program stops here.<br>
 
 &nbsp;
 
-### Pipe redirection
+### 4) Pipe redirection
 In the case execution goes to a pipe character, the execution flow will follow the line until a next node is found.<br>
 Here is some rules on pipe redirection :
 ```
-- A node have 1 input and 2 possible outputs (DOWN/LEFT)
+- A node have 3 possible inputs (UP/DOWN/LEFT) and 2 possible outputs (DOWN/LEFT)
 
 - A pipe has no proper 'sens'
   (The same character '|' can be either traveled from UP to DOWN and from DOWN to UP)
@@ -139,6 +139,7 @@ Here is some rules on pipe redirection :
           o
   )
 ```
+To have a complete description of pipe redirection, a table is available next to this document in file *'redirections.png'*.
 
 &nbsp;
 
