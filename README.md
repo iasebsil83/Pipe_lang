@@ -84,7 +84,7 @@ Then, depending on the exit code of this command, execution continues :
  - **DOWN** : if error code is 0     (No problem in command)
  - **LEFT** : if error code is not 0 (Problem occured)
 
-(The command to is a ***BASH*** command)<br>
+(The command will be executed as a ***BASH*** command)<br>
 **A node must always be followed by a space, even if there is no command after it.**
 
 &nbsp;
@@ -103,7 +103,7 @@ Here is some rules on pipe redirection :
 ```
 - A node have 3 possible inputs (UP/DOWN/LEFT) and 2 possible outputs (DOWN/LEFT)
 
-- A pipe has no proper 'sens'
+- A pipe has no proper 'sens'.
   (The same character '|' can be either traveled from UP to DOWN and from DOWN to UP)
 
 - Depending on the sens the execution goes, the flow can be turned.
