@@ -1,0 +1,36 @@
+## Here is an example for Pipe.
+
+syntax pipe "\.pipe$"
+header "^#!.*pipe"
+magic "Pipe script"
+comment "#"
+
+
+
+# Comments
+color cyan "(^|[[:blank:]])#.*"
+
+# Command
+color brightwhite,black "o[[:space:]]\S+.*"
+
+# Dots
+color brightred "o[[:space:]]"
+
+# Special cases (often used words)
+color brightwhite,black "(echo|do|to)[[:space:]]"
+
+# Force direction
+color blue "(\^)" "v" "<" ">"
+
+# Straight lines + crosses
+color green "(\|)" "(\-)"
+color green "(\+)"
+
+# Corners
+color yellow "(\\)" "/"
+
+# Shebang
+color cyan "(^|[[:blank:]])#!.*"
+
+# Trailing blanks
+color ,green "[[:space:]]+$"

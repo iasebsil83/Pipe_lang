@@ -39,9 +39,10 @@ Get the repository from GitHub :
 ```bash
 git clone https://github.com/iasebsil83/Pipe_lang
 ```
-Then launch the installer : (requires root privileges to install correctly)
+Then, go into the repository folder and launch the installer : (requires root privileges to install correctly)
 ```bash
-sudo ./Pipe_lang/install
+cd Pipe_lang
+sudo ./install
 ```
 
 Now you should be able to run command ***'pipe'***.
@@ -49,7 +50,7 @@ Now you should be able to run command ***'pipe'***.
 ### Uninstall
 To uninstall Pipe_lang : (requires root privileges)
 ```bash
-sudo rm -rf /opt/Pipe_lang /usr/bin/pipe
+sudo rm -rf /opt/Pipe_lang /usr/bin/pipe /usr/share/nano/pipe.nanorc
 ```
 
 There you go !
@@ -153,6 +154,10 @@ Other options are available, use `pipe --help` to see them.
 &nbsp;
 
 That's it for the Pipe language, hoping it leads to beautiful codes !
+
+&nbsp;
+
+**LAST NOTE : ** A syntax coloration file for the nano editor is included and will be installed in /usr/share/nano/pipe.nanorc if the editor is already installed on your computer.
 
 &nbsp;
 

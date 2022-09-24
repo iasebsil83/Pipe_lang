@@ -11,8 +11,12 @@ if [[ -e /opt/Pipe_lang ]]; then
 	exit 1
 fi
 
-#installation
+#nano coloration file installation (if nano installed)
+mv nano/pipe.nanorc /usr/share/nano/pipe.nanorc 2> /dev/null && \
+echo "Successfully installed Pipe syntax coloration file for nano editor."
+
+#program installation
 mkdir -p /opt
-mv Pipe_lang /opt/Pipe_lang            && \
-ln -s /opt/Pipe_lang/run /usr/bin/pipe && \
+mv       $PWD               /opt/Pipe_lang && \
+ln    -s /opt/Pipe_lang/run /usr/bin/pipe  && \
 echo "Successfully installed Pipe_lang."
