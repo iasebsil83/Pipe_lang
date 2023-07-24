@@ -6,7 +6,7 @@
 
 
 '''
-LICENCE :
+LICENSE :
 
     Pipe_lang
     Copyright (C) 2021 SILVANO Sebastien
